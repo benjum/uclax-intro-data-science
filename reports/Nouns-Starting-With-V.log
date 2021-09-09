@@ -1,0 +1,109 @@
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/jupyter_cache/executors/utils.py", line 56, in single_nb_execution
+    record_timing=False,
+  File "/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/nbclient/client.py", line 1117, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/nbclient/util.py", line 78, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/nbclient/util.py", line 57, in just_run
+    return loop.run_until_complete(coro)
+  File "/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/asyncio/base_events.py", line 587, in run_until_complete
+    return future.result()
+  File "/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/nbclient/client.py", line 559, in async_execute
+    cell, index, execution_count=self.code_cells_executed + 1
+  File "/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/nbclient/client.py", line 862, in async_execute_cell
+    self._check_raise_for_error(cell, exec_reply)
+  File "/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/nbclient/client.py", line 765, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+# get words that start with v
+vwords = [i for i in words.words() if i[0]=='v']
+# function to test if something is a noun
+is_noun = lambda pos: pos[:2] == 'NN'
+# do the nlp stuff
+vwordsNouns = [word for (word, pos) in nltk.pos_tag(vwords) if is_noun(pos)]
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mLookupError[0m                               Traceback (most recent call last)
+[0;32m/tmp/ipykernel_1654/200871356.py[0m in [0;36m<module>[0;34m[0m
+[1;32m      4[0m [0mis_noun[0m [0;34m=[0m [0;32mlambda[0m [0mpos[0m[0;34m:[0m [0mpos[0m[0;34m[[0m[0;34m:[0m[0;36m2[0m[0;34m][0m [0;34m==[0m [0;34m'NN'[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      5[0m [0;31m# do the nlp stuff[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[0;32m----> 6[0;31m [0mvwordsNouns[0m [0;34m=[0m [0;34m[[0m[0mword[0m [0;32mfor[0m [0;34m([0m[0mword[0m[0;34m,[0m [0mpos[0m[0;34m)[0m [0;32min[0m [0mnltk[0m[0;34m.[0m[0mpos_tag[0m[0;34m([0m[0mvwords[0m[0;34m)[0m [0;32mif[0m [0mis_noun[0m[0;34m([0m[0mpos[0m[0;34m)[0m[0;34m][0m[0;34m[0m[0;34m[0m[0m
+[0m
+[0;32m/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/nltk/tag/__init__.py[0m in [0;36mpos_tag[0;34m(tokens, tagset, lang)[0m
+[1;32m    162[0m     [0;34m:[0m[0mrtype[0m[0;34m:[0m [0mlist[0m[0;34m([0m[0mtuple[0m[0;34m([0m[0mstr[0m[0;34m,[0m [0mstr[0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    163[0m     """
+[0;32m--> 164[0;31m     [0mtagger[0m [0;34m=[0m [0m_get_tagger[0m[0;34m([0m[0mlang[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    165[0m     [0;32mreturn[0m [0m_pos_tag[0m[0;34m([0m[0mtokens[0m[0;34m,[0m [0mtagset[0m[0;34m,[0m [0mtagger[0m[0;34m,[0m [0mlang[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    166[0m [0;34m[0m[0m
+
+[0;32m/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/nltk/tag/__init__.py[0m in [0;36m_get_tagger[0;34m(lang)[0m
+[1;32m    104[0m         [0mtagger[0m[0;34m.[0m[0mload[0m[0;34m([0m[0map_russian_model_loc[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    105[0m     [0;32melse[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 106[0;31m         [0mtagger[0m [0;34m=[0m [0mPerceptronTagger[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    107[0m     [0;32mreturn[0m [0mtagger[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    108[0m [0;34m[0m[0m
+
+[0;32m/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/nltk/tag/perceptron.py[0m in [0;36m__init__[0;34m(self, load)[0m
+[1;32m    166[0m         [0;32mif[0m [0mload[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    167[0m             AP_MODEL_LOC = "file:" + str(
+[0;32m--> 168[0;31m                 [0mfind[0m[0;34m([0m[0;34m"taggers/averaged_perceptron_tagger/"[0m [0;34m+[0m [0mPICKLE[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    169[0m             )
+[1;32m    170[0m             [0mself[0m[0;34m.[0m[0mload[0m[0;34m([0m[0mAP_MODEL_LOC[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/opt/hostedtoolcache/Python/3.7.11/x64/lib/python3.7/site-packages/nltk/data.py[0m in [0;36mfind[0;34m(resource_name, paths)[0m
+[1;32m    581[0m     [0msep[0m [0;34m=[0m [0;34m"*"[0m [0;34m*[0m [0;36m70[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    582[0m     [0mresource_not_found[0m [0;34m=[0m [0;34m"\n%s\n%s\n%s\n"[0m [0;34m%[0m [0;34m([0m[0msep[0m[0;34m,[0m [0mmsg[0m[0;34m,[0m [0msep[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 583[0;31m     [0;32mraise[0m [0mLookupError[0m[0;34m([0m[0mresource_not_found[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    584[0m [0;34m[0m[0m
+[1;32m    585[0m [0;34m[0m[0m
+
+[0;31mLookupError[0m: 
+**********************************************************************
+  Resource [93maveraged_perceptron_tagger[0m not found.
+  Please use the NLTK Downloader to obtain the resource:
+
+  [31m>>> import nltk
+  >>> nltk.download('averaged_perceptron_tagger')
+  [0m
+  For more information see: https://www.nltk.org/data.html
+
+  Attempted to load [93mtaggers/averaged_perceptron_tagger/averaged_perceptron_tagger.pickle[0m
+
+  Searched in:
+    - '/home/runner/nltk_data'
+    - '/opt/hostedtoolcache/Python/3.7.11/x64/nltk_data'
+    - '/opt/hostedtoolcache/Python/3.7.11/x64/share/nltk_data'
+    - '/opt/hostedtoolcache/Python/3.7.11/x64/lib/nltk_data'
+    - '/usr/share/nltk_data'
+    - '/usr/local/share/nltk_data'
+    - '/usr/lib/nltk_data'
+    - '/usr/local/lib/nltk_data'
+**********************************************************************
+
+LookupError: 
+**********************************************************************
+  Resource [93maveraged_perceptron_tagger[0m not found.
+  Please use the NLTK Downloader to obtain the resource:
+
+  [31m>>> import nltk
+  >>> nltk.download('averaged_perceptron_tagger')
+  [0m
+  For more information see: https://www.nltk.org/data.html
+
+  Attempted to load [93mtaggers/averaged_perceptron_tagger/averaged_perceptron_tagger.pickle[0m
+
+  Searched in:
+    - '/home/runner/nltk_data'
+    - '/opt/hostedtoolcache/Python/3.7.11/x64/nltk_data'
+    - '/opt/hostedtoolcache/Python/3.7.11/x64/share/nltk_data'
+    - '/opt/hostedtoolcache/Python/3.7.11/x64/lib/nltk_data'
+    - '/usr/share/nltk_data'
+    - '/usr/local/share/nltk_data'
+    - '/usr/lib/nltk_data'
+    - '/usr/local/lib/nltk_data'
+**********************************************************************
+
+
